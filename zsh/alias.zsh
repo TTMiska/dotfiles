@@ -39,6 +39,11 @@ function gitcd() {
   fi
 }
 
+# git checkout develop, fetch origin and then checkout your next branch
 function gitfc() {
   git checkout develop && git fetch && git checkout $@
 }
+
+if [[ ! -d "$HOME/dotfiles/zsh/custom.alias.zsh" ]]; then
+    source $HOME/dotfiles/zsh/custom.alias.zsh
+fi

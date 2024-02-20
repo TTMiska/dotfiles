@@ -4,15 +4,19 @@
 USERNAME=$(whoami)
 
 # Make a backup of the existing files if there are any
-cp ~/.zshrc ~/.zshrc.backup
-cp ~/.bashrc ~/.bashrc.backup
-cp ~/.p10k ~/.p10k.backup
-
-# Remove the main files after making backups
 # TODO: we could use move instead, if the terminal command is universal
-rm -rf ~/.zshrc
-rm -rf ~/.bashrc
-rm -rf ~/.p10k.zsh
+if [[ -f "~/.zshrc" ]]; then
+  cp ~/.zshrc ~/.zshrc.backup
+  rm -rf ~/.zshrc
+fi
+if [[ -f "~/.bashrc" ]]; then
+  cp ~/.bashrc ~/.bashrc.backup
+  rm -rf ~/.bashrc
+fi
+if [[ -f "~/.p10k" ]]; then
+  cp ~/.p10k ~/.p10k.backup
+  rm -rf ~/.p10k.zsh
+fi
 
 # Make empty files for the configurations
 # TODO: is this universal command or is it mac specific?

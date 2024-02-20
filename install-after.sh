@@ -33,18 +33,33 @@ if [[ ! -d "$HOME/.nvm" ]]; then
 fi
 
 # Fonts install
-# if [[ ! -z `find '/usr/share/fonts/truetype' -name 'Menlo'` ]]; then
-#     echo 'Installing font Menlo'
-#     sudo cp -r ./fonts/Menlo/* /usr/share/fonts/truetype
-# fi
-# if [[ ! -z `find '/usr/share/fonts/truetype' -name 'Meslo'` ]]; then
-#     echo 'Installing font Meslo'
-#     sudo cp -r ./fonts/Meslo/* /usr/share/fonts/truetype
-# fi
-# if [[ ! -z `find '/usr/share/fonts/truetype' -name 'DejaVu'` ]]; then
-#     echo 'Installing font Dejavu'
-#     sudo cp -r ./fonts/Dejavu/* /usr/share/fonts/truetype
-# fi
+# if [[ uname == "Linux" ]]; then
+#   if [[ ! -z `find '/usr/share/fonts/truetype' -name '*Menlo*'` ]]; then
+#       echo 'Installing font Menlo'
+#       sudo cp -r ./fonts/Menlo/* /usr/share/fonts/truetype
+#   fi
+#   if [[ ! -z `find '/usr/share/fonts/truetype' -name '*Meslo*'` ]]; then
+#       echo 'Installing font Meslo'
+#       sudo cp -r ./fonts/Meslo/* /usr/share/fonts/truetype
+#   fi
+#   if [[ ! -z `find '/usr/share/fonts/truetype' -name '*DejaVu*'` ]]; then
+#       echo 'Installing font Dejavu'
+#       sudo cp -r ./fonts/Dejavu/* /usr/share/fonts/truetype
+#   fi
+# elif [[ uname == "Darwin" ]]; then
+#   if [[ ! -z `find '/Library/Fonts' -name '*Menlo*'` ]]; then
+#       echo 'Installing font Menlo'
+#       sudo cp -r ./fonts/Menlo/* /Library/Fonts
+#   fi
+#   if [[ ! -z `find '/Library/Fonts' -name '*Meslo*'` ]]; then
+#       echo 'Installing font Meslo'
+#       sudo cp -r ./fonts/Meslo/* //Library/Fonts
+#   fi
+#   if [[ ! -z `find '/Library/Fonts' -name '*DejaVu*'` ]]; then
+#       echo 'Installing font Dejavu'
+#       sudo cp -r ./fonts/Dejavu/* /Library/Fonts
+#   fi
+# if
 
 # Check if we have brew installed, and then install tools using brew
 if [[ -f "/usr/local/bin/brew" ]]; then
@@ -66,12 +81,15 @@ if [[ -f "/usr/local/bin/brew" ]]; then
     brew install docker
   fi
 
+  # Install terraform
+  if [[ ! -f "/usr/local/bin/terraform" ]]; then
+    brew install terraform
+  fi
+
   # Colima install
-  if [[ ! -f "$HOME/.colima"  ]]; then
+  if [[ ! -f "/usr/local/bin/colima" ]]; then
     brew install colima
   fi
 fi
-
-# && uname == "Darwin"
 
 source ~/.zshrc
