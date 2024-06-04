@@ -6,6 +6,8 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 export KUBE_EDITOR='code --wait'
 
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
 if [[ uname == "Linux" ]]; then
     export LDFLAGS="-L/home/linuxbrew/.linuxbrew/opt/isl@0.18/lib"
     export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/isl@0.18/include"

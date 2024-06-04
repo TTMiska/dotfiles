@@ -6,9 +6,11 @@ function _prepend_path() {
 }
 
 # Construct $PATH
-PATH="$PATH:/usr/local/bin:/usr/bin:/usr/sbin"
+export PATH="$PATH:/usr/local/bin:/usr/bin:/usr/sbin"
 [ -d "$HOME/node_modules/.bin" ] && _prepend_path "~/node_modules/.bin"
-PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+export PATH="/usr/local/sbin:$PATH"
 
 if [[ uname == "Linux" ]]; then
 	export ANDROID_HOME="$HOME/Android/Sdk"
